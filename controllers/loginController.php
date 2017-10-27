@@ -48,10 +48,9 @@ class LoginController {
 	}
 
 	public function logout() {
-		// Destruir todas las variables de sesión.
-		$_SESSION = array();
-		session_destroy();
-		IndexController::getInstance()->IndexView();
+		Session::init();
+		Session::destroy();
+		IndexController::getInstance()->index();
 	}
 
 	public function mensaje($msj) {

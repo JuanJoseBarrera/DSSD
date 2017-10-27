@@ -16,4 +16,14 @@ class UsuarioController {
 		$rol = Session::get('rol');
 		return (!strcmp($rol, 'Usuario'));
 	}
+
+	public function index($message=NULL) {
+		$view = new UsuarioView();
+		$view->show();
+	}
+
+	public function formIncidente() {
+		$view = new FormIncidenteView();
+		$view->show();
+	}
 }

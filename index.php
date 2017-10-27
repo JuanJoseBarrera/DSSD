@@ -23,6 +23,8 @@ require_once './model/db/usuarioDB.php';
 require_once './views/twig.php';
 require_once './views/indexView.php';
 require_once './views/loginView.php';
+require_once './views/usuarioView.php';
+require_once './views/formIncidenteView.php';
 
 try {
 	if(!isset($_GET['class'])) {
