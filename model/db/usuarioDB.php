@@ -13,7 +13,7 @@ class UsuarioDB extends ModelDB {
 
 	public function select($user, $pass) {
 		$mapper = function($row) {
-			$usuario = new Usuario('id', $row['username'], $row['password'] , $row['nombre'], $row['apellido'], $row['fecha_alta'], $row['idRol']);
+			$usuario = new Usuario($row['id'], $row['username'], $row['password'] , $row['nombre'], $row['apellido'], $row['fecha_alta'], $row['idRol']);
 			return $usuario;
 		};
 
@@ -26,5 +26,18 @@ class UsuarioDB extends ModelDB {
 		$usuario = $answer[0];
 
 		return $usuario;
+	}
+
+	public function getAll() {
+		$mapper = function($row) {
+			$rol = new Rol($row['idRol'], $row['nombreRol']);
+			$usuario = new Usuario($row['id'], $row['username'], $row['password'], $row['nombre'], $row['apellido'], $row['fecha_alta'], $rol);
+			return $usuario;
+		};
+
+		$query = "SELECT u.*, r.nombre AS nombreRol FROM usuario u JOIN rol r ON (u.idRol = r.id)";
+		$usuarios = $this->queryList($query, [], $mapper);
+
+		return $usuarios;
 	}
 }

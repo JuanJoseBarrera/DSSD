@@ -25,13 +25,14 @@ class LoginController {
 
 		$user = htmlentities($_POST['username']);
 		$pass = htmlentities($_POST['password']);
-		$user_db = new UsuarioDB();
+		$user_db = UsuarioDB::getInstance();
 		$new_user = $user_db->select($user, $pass);
 
 		if (($new_user->getUsername() == $user) && ($new_user->getPassword() == $pass)) {
 			$rol = $new_user->getRol()->getNombre();
 			$controller = $rol.'Controller';
 			Session::init();
+			Session::set('id', $new_user->getId());
 			Session::set('usuario', $new_user->getUsername());
 			Session::set('apellido', $new_user->getApellido());
 			Session::set('nombre', $new_user->getNombre());

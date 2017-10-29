@@ -1,0 +1,14 @@
+{% extends "layoutBackend.html" %}
+{% block menu %}
+	{% include 'userMenu.html' %}
+{% endblock %}
+{% block content %}
+<div class="wrapper">
+	{% if message %}
+		<div class="text-center bg-danger">
+			<p>{{ message }}</p>
+		</div>
+	{% endif %}
+	<h3 class="text-center">Incidentes</h3>
+</div>
+{% endblock %}

@@ -1,6 +1,7 @@
 <?php
 
 /** CONTROLLERS **/
+require_once './controllers/administradorController.php';
 require_once './controllers/indexController.php';
 require_once './controllers/loginController.php';
 require_once './controllers/sessionController.php';
@@ -16,15 +17,19 @@ require_once './model/clases/usuario.php';
 
 /** MODELO CONSULTAS **/
 require_once './model/db/modelDB.php';
+require_once './model/db/incidenteDB.php';
 require_once './model/db/rolDB.php';
 require_once './model/db/usuarioDB.php';
 
 /** VISTAS **/
 require_once './views/twig.php';
+require_once './views/administradorView.php';
 require_once './views/indexView.php';
 require_once './views/loginView.php';
 require_once './views/usuarioView.php';
 require_once './views/formIncidenteView.php';
+require_once './views/incidentesListView.php';
+require_once './views/userListView.php';
 
 try {
 	if(!isset($_GET['class'])) {

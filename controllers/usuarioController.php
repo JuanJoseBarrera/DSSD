@@ -26,4 +26,13 @@ class UsuarioController {
 		$view = new FormIncidenteView();
 		$view->show();
 	}
+
+	public function incidentesList() {
+		Session::init();
+		$id = Session::get('id');
+		$incidenteDB = IncidenteDB::getInstance();
+		$incidentes = $incidenteDB->selectByUserId($id);
+		$view = new IncidentesListView();
+		$view->show($incidentes);
+	}
 }
