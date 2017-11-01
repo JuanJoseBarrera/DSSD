@@ -5,7 +5,7 @@
 {% block content %}
 <div class="wrapper">
 	{% if message %}
-		<div class="text-center bg-danger">
+		<div class="text-center bg-success">
 			<p>{{ message }}</p>
 		</div>
 	{% endif %}
@@ -32,8 +32,8 @@
 					<td class="dato">{{ usuario.fechaAlta }}</td>
 					<td class="dato">{{ usuario.rol.nombre }}</td>
 					<td class="dato">
-						<a href="./?action=editUser&amp;userId={{usuario.id}}" class="glyphicon glyphicon-pencil" title="Editar"></a>
-						<a href="./?action=deleteUser&amp;userId={{usuario.id}}" class="glyphicon glyphicon-trash" onclick="return confirmDelete()" title="Eliminar"></a>
+						<a href="./?class=AdministradorController&amp;action=editUser&amp;userId={{usuario.id}}" class="glyphicon glyphicon-pencil" title="Editar"></a>
+						<a href="./?class=AdministradorController&amp;action=deleteUser&amp;userId={{usuario.id}}" class="glyphicon glyphicon-trash" onclick="return confirmDelete()" title="Eliminar"></a>
 					</td>
 				</tr>
 				{% endfor %}

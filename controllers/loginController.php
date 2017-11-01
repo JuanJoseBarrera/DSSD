@@ -45,7 +45,7 @@ class LoginController {
 
 	public function login($message=NULL) {
 		$view = new LoginView();
-		$view->show();
+		$view->show($message);
 	}
 
 	public function logout() {
@@ -55,6 +55,6 @@ class LoginController {
 	}
 
 	public function mensaje($msj) {
-		IndexController::getInstance()->index($msj);
+	$this->login($msj);
 	}
 }

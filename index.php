@@ -30,6 +30,7 @@ require_once './views/usuarioView.php';
 require_once './views/formIncidenteView.php';
 require_once './views/incidentesListView.php';
 require_once './views/userListView.php';
+require_once './views/userFormView.php';
 
 try {
 	if(!isset($_GET['class'])) {
@@ -68,5 +69,5 @@ try {
 		}
 	}
 } catch (Exception $e) {
-	IndexController::getInstance()->index($e->getMessage());
+	IndexController::getInstance()->index('error', $e->getMessage());
 }

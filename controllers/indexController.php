@@ -16,8 +16,8 @@ class IndexController {
 		return true;
 	}
 
-	public function index($message=NULL) {
+	public function index($type=NULL, $message=NULL) {
 		$view = new IndexView();
-		$view->show();
+		$view->show($type, $message);
 	}
 }

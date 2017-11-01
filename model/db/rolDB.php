@@ -22,4 +22,16 @@ class RolDB extends ModelDB {
 
 		return $answer[0];
 	}
+
+	public function getAll() {
+		$mapper = function($row) {
+			$rol = new Rol($row['id'], $row['nombre']);
+			return $rol;
+		};
+
+		$query = "SELECT id, nombre FROM rol ";
+		$answer = $this->queryList($query, [], $mapper);
+
+		return $answer;
+	}
 }
