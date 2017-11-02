@@ -24,4 +24,32 @@ class IncidenteDB extends ModelDB {
 
 		return $incidentes;
 	}
+
+	public function save($incidente, $objetos) {
+		$connection = $this->getConnection();
+		$connection->beginTransaction();
+		try {
+			$query = "INSERT INTO incidente (descripcion, nro_cliente) VALUES (?, ?)";
+			$stmt = $connection->prepare($query);
+			$params = array($incidente->getDescripcion(), $incidente->getNroCliente());
+			$stmt->execute($params);
+			$incidentId = $connection->lastInsertId();
+			foreach ($objetos as $objeto) {
+				$query = "INSERT INTO objeto (descripcion) VALUES (?)";
+				$stmt = $connection->prepare($query);
+				$params = array(htmlentities($objeto));
+				$stmt->execute($params);
+
+				$objectId = $connection->lastInsertId();
+				$query = "INSERT INTO incidente_objeto (incidente_id, objeto_id) VALUES (?, ?)";
+				$stmt = $connection->prepare($query);
+				$params = array($incidentId, $objectId);
+				$stmt->execute($params);
+			}
+			$connection->commit();
+		} catch (Exception $e) {
+			$connection->rollBack();
+		}
+		return;
+	}
 }

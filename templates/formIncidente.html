@@ -15,7 +15,7 @@
 			<div class="form-group">
 				<label for="nroCliente" class="col-md-4 control-label">N&uacute;mero de Cliente</label>
 				<div class="col-md-4">
-					<input id="nroCliente" class="form-control" type="number" name="nroCliente" required placeholder="N&uacute;mero de Cliente">
+					<input id="nroCliente" min="0" class="form-control" type="number" name="nroCliente" required placeholder="N&uacute;mero de Cliente">
 				</div>
 			</div>
 
@@ -33,13 +33,10 @@
 					<input class="form-control" type="text" name="objeto[]" value="Ingrese Objeto" />
 				</div>
 				<div class="col-md-4">
-					<!-- input class="btn btn-default" type="button" id="btn_eliminar" value="-" -->
-					<input class="btn btn-primary" type="button" id="btn_agregar" value="Agregar" />
+					<input class="btn btn-primary" type="button" id="btn_agregar" onclick="addField()" value="Agregar" />
 				</div>
 			</div>
-			<div class="form-group">
-				<div id="lista" class="col-lg-offset-4 col-md-4">
-				</div>
+			<div id="lista" class="form-group">
 			</div>
 
 			<div class="form-group">
@@ -50,14 +47,4 @@
 			</div>
 		</form>
 	</div>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#txt_contenido_li").focus();
-			$("#btn_agregar").click(function() {
-				var objectInput = "<input class=\"form-control\" type=\"text\" name=\"objeto[]\" value=\"Ingrese Objeto\">";
-				$("#lista").append(objectInput);
-				$("#txt_contenido_li").val("").focus();
-			});
-		});
-	</script>
 {% endblock %}

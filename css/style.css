@@ -8,3 +8,7 @@
 	border-collapse: collapse;
 	text-align: center;
 }
+
+.parent {
+	margin-bottom: 3%;
+}

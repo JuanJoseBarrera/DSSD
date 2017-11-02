@@ -9,33 +9,40 @@ class Incidente {
 	private $objetos;
 	private $descripcion;
 
-	function __construct() {}
+	function __construct($id, $nroCliente, $tipo, $fecha, $objetos, $descripcion) {
+		$this->id = $id;
+		$this->nroCliente = $nroCliente;
+		$this->tipo = $tipo;
+		$this->fecha = $fecha;
+		$this->objetos = $objetos;
+		$this->descripcion = $descripcion;
+	}
 
 	/**
 	* GETTERS
 	*/
 	public function getId() {
-		return $THIS->id;
+		return $this->id;
 	}
 
 	public function getNroCliente() {
-		return $THIS->nroCliente;
+		return $this->nroCliente;
 	}
 
 	public function getTipo() {
-		return $THIS->tipo;
+		return $this->tipo;
 	}
 
 	public function getFecha() {
-		return $THIS->fecha;
+		return $this->fecha;
 	}
 
 	public function getObjetos() {
-		return $THIS->objetos;
+		return $this->objetos;
 	}
 
 	public function getDescripcion() {
-		return $THIS->descripcion;
+		return $this->descripcion;
 	}
 
 	/**

@@ -35,4 +35,18 @@ class UsuarioController {
 		$view = new IncidentesListView();
 		$view->show($incidentes);
 	}
+
+	public function saveIncident() {
+		if (($_POST['nroCliente']!="") &&  ($_POST['descripcion']!="") && ($_POST['objeto']!="")) {
+			$nroCliente = htmlentities($_POST['nroCliente']);
+			$descripcion = htmlentities($_POST['descripcion']);
+			$objetos = $_POST['objeto'];
+			$incidente_db = IncidenteDB::getInstance();
+			$incidente = new Incidente('id', $nroCliente, 'tipo', 'fecha', 'objetos', $descripcion);
+			$incidente_db->save($incidente, $objetos);
+			$this->incidentesList("El usuario fué creado correctamente");
+		} else {
+			$this->formIncidente("Completar todos los campos");
+		}
+	}
 }

@@ -6,7 +6,11 @@ class Objeto {
 	private $nombre;
 	private $descripcion;
 
-	function __construct() {}
+	function __construct($id, $nombre, $descripcion) {
+		$this->id = $id;
+		$this->nombre = $nombre;
+		$this->descripcion = $descripcion;
+	}
 
 	/**
 	* GETTERS
